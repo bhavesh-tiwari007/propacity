@@ -2,8 +2,8 @@ const { createFileController} =  require('../controller/fileController');
 
 const router = require('express').Router();
 const auth = require('../middleware/auth');
-const upload = require('../utils/awsUtils');
+const {uploadFileMulter} = require('../utils/awsUtils');
 
-router.post('/file', auth, upload.upload.single('file'), createFileController);
+router.post('/file', auth, uploadFileMulter().single("file"), createFileController);
 
 module.exports = router;
